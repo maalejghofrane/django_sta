@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="widht=device-width,intial-scale=1.0" />
+    <title>Gestion Des Notes Project</title>
+    <link rel="stylesheet" href="{% static 'etudiant/css/bootstrap.css' %}" />
+    <style>
+      body {
+      zoom :80%      }
+      </style>
+  </head>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light offset-1">
+    <a class="navbar-brand" href="/">Gestion Des Notes</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item active">
+          <a class="nav-link" href="/"> + Etudiants <span class="sr-only"></span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/notes"> + Notes</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/specialites"> + Specialites</a>
+        </li>  
+
+        <li class="nav-item">
+          <a class="nav-link" href="/matieres"> + Matieres</a>
+        </li> 
+         <li class="nav-item">
+          <a class="nav-link" href="/modules"> + Modules</a>
+        </li> 
+
+        <li class="nav-item">
+          <a class="nav-link" href="/show_all"> + Resultat</a>
+        </li> 
+
+      </ul>
+    </div>
+  </nav>
+  <body class='bodyw'>
+    <div class="container mt-5">  
+      {% block content %} {% endblock content %}
+      <script src="{% static 'etudiant/js/jquery.js'%}"></script>
+      <script src="{% static 'etudiant/js/popper.js'%}"></script>
+      <script src="{% static 'etudiant/js/bootstrap.js'%}"></script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+{% extends 'etudiant/base.html'%} 
+{% block content %}
+<div class="row">
+  <div class="col-sm-4">
+    <h4 class="text-center alert alert-info">Ajouter une matiere</h4>
+    <form action="" method="POST">
+      {% csrf_token %} 
+      {{form.as_p}}
+      <input type="submit" class="btn btn-success" value="Add" />
+    </form>
+  </div>
+  <div class="col-sm-7 offset-1">
+    <h4 class="text-center alert alert-info"> Afficher les informations de la matiere</h4>
+    {% if stu %} 
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Titre </th>
+            <th scope="col">Ds</th>
+            <th scope="col">Exam</th>
+            <th scope="col">Tp</th>
+            <th scope="col">Coeff</th>
+            <th scope="col">Module</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for st in stu %}
+          <tr>
+            <td>{{st.titre}}</td>
+            <td>{{st.ds}}</td>
+            <td>{{st.exam}}</td>
+            <td>{{st.tp}}</td>
+            <td>{{st.coeff}}</td>
+            <td>{{st.module.title}}</td>
+            <td>
+                <a href="{% url 'updatedataMatiere' st.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                <form action="{% url 'deletedata_matiere' st.id %}" 
+                method="post" class="d-inline"> {% csrf_token %} 
+
+                    <input type="submit" class="btn btn-danger" value="Supprimer">
+                </form>
+
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    
+    {% else %}
+    <h4 class="text-center alert alert-warning"> No records </h4>
+    {% endif %}
+  </div>
+</div >
+{% endblock content%}

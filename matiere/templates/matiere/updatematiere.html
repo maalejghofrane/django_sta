@@ -1,0 +1,14 @@
+{% extends 'etudiant/base.html'%} 
+{% block content %}
+<div class="row">
+<div class="col-sm-8 offset-2">
+<h4 class="alert alert-info"> Metre à jour une matiere {{id}}</h4>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" class="btn btn-success" value="Update">
+    <a href="{% url 'addandshow_mat' %}" class= "btn btn-info"> Back</a>
+</form>
+</div>
+</div>
+{% endblock content%}

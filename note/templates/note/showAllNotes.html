@@ -1,0 +1,47 @@
+{% extends 'etudiant/base.html'%} 
+{% block content %}
+  <div class="col-sm-12">
+    <h4 class="text-center alert alert-info"> Resultat </h4>
+    {% if stu %} 
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Module</th>
+            <th scope="col">Matiére</th>
+            <th scope="col">ds</th>
+            <th scope="col">tp</th>
+            <th scope="col">exam</th>
+            <th scope="col">Moyenne</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for st in stu %}
+          <tr>
+            <th scope="row">{{st.user.name}}</th>
+            <th scope="row">{{st.user.age}}</th>
+            <th scope="row">{{st.matiere.module.title}}</th>
+            <th scope="row">{{st.matiere.titre}}</th>
+            <td>{{st.note_ds}}</td>
+            <td>{{st.note_tp}}</td>
+            <td>{{st.note_exam}}</td>
+            <td>{{st.moy|floatformat:2}}</td>
+            <td>              
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <!-- {% for nt in notes %}
+      <h1>{nt.user}</h1>
+      {% endfor %}
+    {% else %} -->
+
+    <h4 class="text-center alert alert-warning"> No records </h4>
+    {% endif %}
+  </div>
+</div >
+
+{% endblock content%}

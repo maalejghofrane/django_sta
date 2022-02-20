@@ -1,0 +1,46 @@
+{% extends 'etudiant/base.html'%} 
+{% block content %}
+<div class="row">
+  <div class="col-sm-4">
+    <h4 class="text-center alert alert-info">Ajouter specialite</h4>
+    <form action="" method="POST">
+      {% csrf_token %} 
+      {{form.as_p}}
+      <input type="submit" class="btn btn-success" value="Add" />
+    </form>
+  </div>
+  <div class="col-sm-7 offset-1">
+    <h4 class="text-center alert alert-info"> Afficher les specialites</h4>
+    {% if stu %} 
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Niveau</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for st in stu %}
+          <tr>
+            <th scope="row">{{st.titre}}</th>
+            <td>{{st.niveau}}</td>
+            <td>
+                <a href="{% url 'updatedataSpecialites' st.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                <form action="{% url 'deletedataSpecialites' st.id %}" 
+                method="post" class="d-inline"> {% csrf_token %} 
+
+                    <input type="submit" class="btn btn-danger" value="Supprimer">
+                </form>
+
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    
+    {% else %}
+    <h4 class="text-center alert alert-warning"> No records </h4>
+    {% endif %}
+  </div>
+</div >
+{% endblock content%}
